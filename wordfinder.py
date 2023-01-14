@@ -1,20 +1,25 @@
-"""Word Finder: finds random words from a dictionary."""
+main.py
 
 import random
 
-class WordFinder:
-    
-    def __init__(self, path):
-        """Read dictionary and reports number of words"""
-    
-        words = open(words.txt)
-        self.words = self.parse(words) 
-        print(f"{len(self.words)} words read")
-    
-    def parse(self, words):  
-        """Parse dict_file -> list of words"""
-        
-        return [w.strip() for w in words]
-    
-    def random(self):
-        return random.choice(self.words)
+import requests
+
+
+def get_list_of_words():
+    response = requests.get(
+        'https://www.mit.edu/~ecprice/wordlist.10000',
+        timeout=10
+    )
+
+    string_of_words = response.content.decode('utf-8')
+
+    list_of_words = string_of_words.splitlines()
+    print(list_of_words)
+
+    return list_of_words
+
+
+words = get_list_of_words()
+
+random_word = random.choice(words)
+print(random_word)
