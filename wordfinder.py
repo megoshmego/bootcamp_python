@@ -3,10 +3,11 @@
 import random
 
 class WordFinder:
-    def __init__(self, words.txt):
+    
+    def __init__(self, path):
         """Read dictionary and reports number of words"""
-        
-        dict_file = open(words.txt)
+    
+        words = open(words.txt)
         self.words = self.parse(words) 
         print(f"{len(self.words)} words read")
     
