@@ -1,5 +1,3 @@
-main.py
-
 import random
 
 import requests
